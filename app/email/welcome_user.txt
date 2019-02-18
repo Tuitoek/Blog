@@ -1,0 +1,6 @@
+Hello {{user.username}},
+Welcome to Tuitoek's blog
+Thank you for signing up.To subscribe to our weekly blogs fill out the  subscription form on the right of the home page .
+
+With regards,
+Sarah Tuitoek.
