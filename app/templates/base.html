@@ -1,0 +1,26 @@
+{% extends 'bootstrap/base.html'%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  {%block styles %}
+  {{super()}}
+  <!--Importing the simple mde css and js files  -->
+  {{ simplemde.css}}
+  {{ simplemde.js }}
+
+  {% endblock %}
+  <title></title>
+</head>
+
+<body>
+  {% block navbar%}
+  {% include 'navbar.html'%}
+  {% endblock%}
+
+
+</body>
+
+</html>
