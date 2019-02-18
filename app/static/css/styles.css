@@ -1,0 +1,14 @@
+.navbar{
+  background-color: #D4B4D;
+}
+.jumbotron{
+  background-color: #D4B4D;
+  float:right;
+}
+.col-md-4 {
+  float:right;
+}
+.header{
+  background-image: url("https://wallpapercave.com/wp/wp3719998.jpg");
+  background-size: cover;
+}
