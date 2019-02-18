@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  {% block styles%}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+  {% endblock %}
+  {%if title%}
+  <title>{{title}}</title>
+  {%else%}
+  <title>Tuitoek's blog</title>
+  {%endif%}
+</head>
+
+<body>
+  {%block content%}
+  <div class="header">
+    <h1 align="center">Tuitoek's Blog</h1>
+    <hr>
+
+
+    <!-- <img src="https://i.pinimg.com/564x/6c/d2/67/6cd2670938cb4b92ccbabe0aa2dd45b3.jpg?b=t" alt=""> -->
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="jumbotron" style="background-color:#D4B4D;">
+        <div class="form-group">
+          {{wtf.quick_form(subscribe_form)}}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  {% endblock%}
+</body>
+
+</html>
