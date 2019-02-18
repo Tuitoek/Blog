@@ -1,4 +1,5 @@
 virtual/
+start.sh
 *.pyc
-start.sh/
+.vscode/
 *.json/
