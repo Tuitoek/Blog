@@ -4,6 +4,10 @@
 
 <head>
   <meta charset="utf-8">
+  {% block styles%}
+  {{ super() }}    </ul>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+  {% endblock %}
   <title></title>
 </head>
 
@@ -11,22 +15,33 @@
   {%block content%}
   <div class="container_fluid">
     <div class="row">
-      <div class="col-md-4">
-        <h3>{{user.username}}</h3>
-        {%if user.bio%}
-        <p>Bio</p>
-        <p>{{user.bio}}</p>
-        {%else%}
-        <p>Guess What!!!! {{user.username}} has no bio.<br>Can you imagine that?</p>
-        {%endif%}
+
+        <div class="col-md-4*">
+          <div class="jumbotron" style="background-color:black">
+          {% if user.profile_pic_path%}
+          <div class="profile">
+              <img src="{{url_for('static',filename=user.profile_pic_path)}}" class="img-thumbnail" syle="float:left" width=30%>
+          </div>
+
+          {%else%}
+          <p>No profile picture</p>
+          {% endif%}
+          <br>
+          <div>
+            <h3>Username :{{user.username}}</h3>
+            {%if user.bio%}
+            <p>Bio :{{user.bio}}</p>
+            {%else%}
+            <p>Guess What!!!! {{user.username}} has no bio.<br>Can you imagine that?</p>
+            {%endif%}
+          </div>
       </div>
 
-      <div class="col-md-4">
-        {% if user.profile_pic_path%}
-        <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
-        {%else%}
-        <p>No profile picture</p>
-        {% endif%}
+
+
+
+      </div>
+      <div class="col-md-4" style="color:black">
 
       </div>
       <div class="col-md-4">

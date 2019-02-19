@@ -1,23 +1,28 @@
 from flask import render_template,request,redirect,url_for,abort
-from ..models import Subscribe,User
+from ..models import Subscribe,User,Blog
 from . import main
 from .forms import SubscribeForm,UpdateProfile,BlogForm
 from flask_login import login_required
 from .. import db,photos
+import requests
+import json
 
 
 # Views
-@main.route('/')
+@main.route('/',methods= ['POST', 'GET'])
 def index():
     subscribe_form = SubscribeForm()
     '''
     View root page function that returns the index page and its data
     '''
     if subscribe_form.validate_on_submit():
-        email = form.email.data
-        new_subscribe = Subscribe(email)
+        email = subscribe_form.email.data
+        # new_subscribe = Subscribe(email)
     title="Tuitoek's blog"
-    return render_template('index.html',title = title,subscribe_form =subscribe_form)
+
+    display = requests.get('http://quotes.stormconsultancy.co.uk/random.json').json()
+
+    return render_template('index.html',title = title,subscribe_form =subscribe_form,display = display,blog=Blog.query.all())
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -28,7 +33,7 @@ def profile(uname):
 
     return render_template("profile/profile.html", user = user)
 
-@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@main.route('/user/<uname>/update/pic',methods= ['POST','GET'])
 @login_required
 def update_pic(uname):
     user = User.query.filter_by(username = uname).first()
@@ -37,7 +42,7 @@ def update_pic(uname):
         path = f'photos/{filename}'
         user.profile_pic_path = path
         db.session.commit()
-    return redirect(url_for('main.update',uname=uname))
+    return redirect(url_for('main.update_pic',uname=uname))
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
@@ -59,15 +64,44 @@ def update_profile(uname):
 
     return render_template('profile/update.html',form =form)
 
-@main.route('/blog')
+@main.route('/fashion', methods=['GET', 'POST'])
+def fashion():
+    blog = Blog.query.filter_by().first()
+    Fashionblog = Blog.query.filter_by(category="Fashionblog")
+    return render_template('blogs.html', blog=blog, fashionblog=fashionblog)
+
+@main.route('/food', methods=['GET', 'POST'])
+def fashpromotionpitchion():
+    blog = Blog.query.filter_by().first()
+    Foodblog = Blog.query.filter_by(category="Foodblog")
+    return render_template('blogs.html', blog=blog, foodblog=foodblog)
+
+@main.route('/life', methods=['GET', 'POST'])
+def life():
+    blog = Blog.query.filter_by().first()
+    Lifeblog = Blog.query.filter_by(category="lifeblog")
+    return render_template('blogs.html', blog=blog, lifeblog=lifeblog)
+
+@main.route('/fitness', methods=['GET', 'POST'])
+def fitness():
+    blog = Blog.query.filter_by().first()
+    fitnessblog = Blog.query.filter_by(category="Fitnessblog")
+
+    return render_template('blogs.html', blog=blog,fitnessblog = fitnessblog)
+
+@main.route('/blog',methods=['GET','POST'])
 def post_blog():
     blog_form = BlogForm()
 
-    if form.validate_on_submit():
-        blog.title = form.blog.data
-        blog.picture = form.picture.data
-        blog.content = form.content.data
+    if blog_form.validate_on_submit():
+        title = blog_form.title.data
+        description = blog_form.description.data
+        category=blog_form.category.data
+        post_blog = Blog(title=title,description=description,category=category)
+
+        db.session.add(post_blog)
+        db.session.commit()
 
         return redirect(url_for('main.index'))
 
-    return render_template('blog.html',blog_form=blog_form)    
+    return render_template('blogs.html',blog_form=blog_form)

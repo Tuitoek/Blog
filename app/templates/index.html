@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   {% block styles%}
-  {{ super() }}
+  {{ super() }}    </ul>
   <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
   {% endblock %}
   {%if title%}
@@ -15,27 +15,30 @@
   <title>Tuitoek's blog</title>
   {%endif%}
 </head>
-
 <body>
   {%block content%}
   <div class="header">
     <h1 align="center">Tuitoek's Blog</h1>
-    <hr>
 
-
-    <!-- <img src="https://i.pinimg.com/564x/6c/d2/67/6cd2670938cb4b92ccbabe0aa2dd45b3.jpg?b=t" alt=""> -->
+  <p align="center">Posted by:{{display.author}}</p>
+  <p align="center">{{display.quote}}</p>
   </div>
-  <div class="row">
+  <p>{{blog.title}}</p>
+
+  </div>
+  <footer><div class="row">
     <div class="col-md-4">
-      <div class="jumbotron" style="background-color:#D4B4D;">
+      <div class="jumbotron" style="background-color:black">
         <div class="form-group">
           {{wtf.quick_form(subscribe_form)}}
 
         </div>
       </div>
 
+      </div>
+
     </div>
-  </div>
+</footer>
 
 
   {% endblock%}

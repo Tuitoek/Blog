@@ -4,18 +4,23 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    {% block styles%}
+    {{ super() }}    </ul>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    {% endblock %}
     <title></title>
   </head>
   <body>
     {%block content%}
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
+      <div class="col-md-6" style="float:right;">
+        <div class="jumbotron" style="background-color:black;">
+          <h3 style="color:white">Please sign in to be able to post !!<br>Be a well known blogger at the moment </h3
+          <div class="form-group" style="color:white">
             {{wtf.quick_form(register_form)}}
           </div>
-
         </div>
+
 
       </div>
 

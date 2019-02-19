@@ -1,15 +1,19 @@
-<div class="navbar navbar-light" role="navigation" style="background-color:#1D0738;>
-  <div class="container-fluid">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" name="button"></button>
-    <a class="navbar-brand " href="/">Home</a>
-    <a class="navbar-brand" href="url_for{{main.blog}}">Blogs</a>
-    <a class="navbar-brand " href="{{url_for('auth.login')}}">Sign In</a>
-    <a class="navbar-brand" href="{{url_for('auth.register')}}">Sign Up </a>
-    {% if current_user.is_authenticated %}
-    <li><a class="navbar-brand" href="{{url_for('auth.logout')}}">Sign out</a></li>
-    <li><a class="navbar-brand" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-    {% endif%}
+<div class="navbar navbar-light" role="navigation" style="background-color:white;>
+  <div class=" container-fluid">
+  <a class="navbar-brand " href="/">Home</a>
+  <a class="navbar-brand" href="{{url_for('main.post_blog')}}">Blogs</a>
+  <a class="navbar-brand " href="{{url_for('auth.login')}}">Sign In</a>
+  <a class="navbar-brand" href="{{url_for('auth.register')}}">Sign Up </a>
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" name="button">Toggle</button>
+  <div class="navbar-collapse collapse">
+      {% if current_user.is_authenticated %}
+      <a class="navbar-brand" href="{{url_for('auth.logout')}}">Sign out</a>
+      <li><a class="navbar-brand" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a>
+      {% endif%}
+
   </div>
+
+</div>
 </div>
 <!-- <div class="navbar navbar-light" style="background-color:#1D0738;" role="navigation">
   <div class="container-fluid">

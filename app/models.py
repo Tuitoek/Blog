@@ -60,16 +60,50 @@ class Blog(db.Model):
     author=db.Column(db.String(100))
     title=db.Column(db.String(100))
     description=db.Column(db.String(1000))
+    category=db.Column(db.String(), nullable=False)
     pic_path=db.Column(db.String(1000))
     url=db.Column(db.String(10000))
 
-class Subscribe():
+    @classmethod
+    def get_blogs(cls, category):
+        blogs = Blog.query.order_by(blog_category=category).desc().all()
+        return blogs
+
+    def __repr__(self):
+        return f'Blog{self.description}'
+
+class Subscribe(db.Model):
+    __tablename__= 'subscribers'
     all_subscribe=[]
     '''
-    class to define quote objects
+    class to define subscribers objects
     '''
-    def __init__(self,author,id,quote):
-        self.email=email
+    id = db.Column(db.Integer,primary_key = True)
+    email = db.Column(db.String(255),unique = True,index = True)
+
+class Fashion:
+    fashion=[]
+    def __init__(self,title,description):
+        self.title = title
+        self.description = description
+class Food:
+    food=[]
+    def __init__(self,title,description):
+        self.title = title
+        self.description = description
+
+class Life:
+    product=[]
+    def __init__(self,title,description):
+        self.title = title
+        self.description = description
+
+class Fitness:
+    interview=[]
+    def __init__(self,title,description):
+        self.title = title
+        self.description = description
+
 
     # def save_subscribe(self):
     #     Subscribe.all_subscribe.append(self)

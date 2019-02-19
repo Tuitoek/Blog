@@ -5,7 +5,7 @@ class Config:
     '''
     API_JSON="http://quotes.stormconsultancy.co.uk/random.json (Links to an external site.)"
     SECRET_KEY='a77302eea2d2'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:bless32@localhost/tblog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:sarahjt12@localhost/tblog'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'

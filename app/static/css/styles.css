@@ -8,7 +8,22 @@
 .col-md-4 {
   float:right;
 }
-.header{
-  background-image: url("https://wallpapercave.com/wp/wp3719998.jpg");
+body{
+  background-image: url("https://wallpapercave.com/wp/wp3720008.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
+a{
+  color:black;
+}
+.row{
+  color:white;
+}
+img{
+  border-radius: 10px;
+}
+/* .header{
+  background-image: url("https://i.pinimg.com/564x/20/d9/cf/20d9cf22b1779b9dec0145cb1a69243d.jpg?b=t");
+  background-repeat: none;
+  background-size: cover;
+} */

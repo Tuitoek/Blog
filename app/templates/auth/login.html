@@ -5,6 +5,10 @@
 
 <head>
   <meta charset="utf-8">
+  {% block styles%}
+  {{ super() }}    </ul>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+  {% endblock %}
   <title></title>
 </head>
 
@@ -21,11 +25,15 @@
       </div>
       {% endfor %}
       <!-- Login form -->
-      <div class="col-md-6">
-        <div class="form-group">
-          {{wtf.quick_form(login_form)}}
-          <p> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+      <div class="col-md-6" style="float:right;">
+        <div class="jumbotron" style="background-color:black;">
+          <h3 style="color:white">Please sign in to be able to post !!<br>Be a well known blogger at the moment </h3
+          <div class="form-group" style="color:white">
+            {{wtf.quick_form(login_form)}}
+            <p  style="color:white"> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+          </div>
         </div>
+
 
       </div>
 
