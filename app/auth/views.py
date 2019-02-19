@@ -4,7 +4,7 @@ from .forms import RegisterForm,LoginForm
 from flask_login import login_user,logout_user,login_required
 from .. import db
 from . import auth
-from ..email import mail_message
+# from ..email import mail_message
 
 
 @auth.route('/register',methods = ["GET","POST"])
@@ -15,10 +15,10 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to Tuitoek's blog","email/welcome_user",user.email,user= user)
+        # mail_message("Welcome to Tuitoek's blog","email/welcome_user",user.email,user= user)
         return redirect(url_for('auth.login'))
         title = "New Account"
-        flask("A signup email has been sent to your account")
+        flash("A signup email has been sent to your account")
     return render_template('auth/signup.html',register_form = form)
 
 @auth.route('/login',methods=['GET','POST'])
@@ -39,3 +39,4 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("main.index"))
+
