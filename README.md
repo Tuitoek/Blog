@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a blog site that one can post blogs and view other people's blogs..https://sarahpitch.herokuapp.com/
+This is a blog site that one can post blogs and view other people's blogs..  https://tblogz.herokuapp.com/ 
 
 ## By Sarah Tuitoek
 
